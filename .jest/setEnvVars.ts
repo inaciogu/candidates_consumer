@@ -1,0 +1,10 @@
+process.env.SQS_ACCESS_KEY_ID = 'accessKeyId';
+process.env.SQS_SECRET_ACCESS_KEY = 'secretAccessKey';
+process.env.SQS_ENDPOINT = 'http://localhost:4566';
+process.env.SQS_REGION = 'us-east-1';
+process.env.SQS_VISIBILITY_TIMEOUT = '20';
+process.env.BULLMQ_HOST = 'localhost';
+process.env.BULLMQ_PORT = '6379';
+process.env.BULLMQ_PASSWORD = 'password';
+process.env.QUEUE_NAME_SQS = 'queueNameSQS';
+process.env.QUEUE_NAME_BULLMQ = 'queueNameBullMQ';
