@@ -1,17 +1,27 @@
-import { BullMQHandler, SQSHandler, logging } from '@coaktion/evolutty';
+import { SQSClientOptions, SQSHandler, logging } from '@coaktion/evolutty';
+import { CandidateRepository } from './candidate.repository';
 
 export class MySQSHandler extends SQSHandler {
-  async handle(content: object, metadata: object): Promise<boolean> {
-    logging.info('content', content);
-    logging.info('metadata', metadata);
-    return true;
-  }
-}
+  private readonly candidatesRepository: CandidateRepository;
 
-export class MyBullMQHandler extends BullMQHandler {
-  async handle(content: object, metadata: object): Promise<boolean> {
-    logging.info('content', content);
-    logging.info('metadata', metadata);
-    return true;
+  constructor(queueName: string, clientOptions: SQSClientOptions) {
+    super(queueName, clientOptions);
+    this.candidatesRepository = new CandidateRepository();
+  }
+
+  async handle(content: any, metadata: object): Promise<boolean> {
+    try {
+      logging.info('content', content);
+      logging.info('metadata', metadata);
+      
+      await this.candidatesRepository.save({
+        name: content.name,
+        email: content.email,
+        desiredPosition: content.position
+      });
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }

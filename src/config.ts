@@ -10,15 +10,7 @@ const config = {
     region: process.env.SQS_REGION,
     visibilityTimeout: parseInt(process.env.SQS_VISIBILITY_TIMEOUT)
   },
-  bullmq: {
-    connection: {
-      host: process.env.BULLMQ_HOST,
-      port: process.env.BULLMQ_PORT,
-      password: process.env.BULLMQ_PASSWORD
-    }
-  },
   queueNameSQS: process.env.QUEUE_NAME_SQS,
-  queueNameBullMQ: process.env.QUEUE_NAME_BULLMQ,
   sentryDsn: process.env.SENTRY_DSN
 };
 

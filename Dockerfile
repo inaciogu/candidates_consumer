@@ -1,7 +1,7 @@
 # docker file for building typescript project and running it
 
 # base image
-FROM node:12.18.3-alpine3.9
+FROM node:16.10.0-alpine
 
 # set working directory
 WORKDIR /usr/src/app
@@ -10,12 +10,13 @@ WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY package.json /usr/src/app/package.json
+COPY package.json ./
 
 RUN npm install --production
 
-# add app
-ADD dist /usr/src/app
+COPY . .
+
+RUN npm run build
 
 # start app
-ENTRYPOINT ["node", "./cjs/index.js"]
+CMD ["node", "./dist/index.js"]

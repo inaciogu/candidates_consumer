@@ -1,6 +1,6 @@
-import { BullMQRouter, SQSRouter } from '@coaktion/evolutty';
+import { SQSRouter } from '@coaktion/evolutty';
 
-import { MyBullMQHandler, MySQSHandler } from '../src/handlers';
+import { MySQSHandler } from '../src/handlers';
 import routes from '../src/routes';
 
 describe('Routes', () => {
@@ -17,11 +17,6 @@ describe('Routes', () => {
         },
         handler: MySQSHandler,
         queueName: 'queueNameSQS'
-      },
-      {
-        routeType: BullMQRouter,
-        handler: MyBullMQHandler,
-        queueName: 'queueNameBullMQ'
       }
     ]);
   });

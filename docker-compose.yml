@@ -1,26 +1,11 @@
 version: '3.7'
-networks:
-  redis-net:
-    driver: bridge
         
 services:
-  redis:
-    image: redis:alpine
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
     ports:
-      - 6379:6379
+      - 27017:27017
     volumes:
-      - ./redis-data:/data
-    networks:
-      - redis-net
-  app:
-    build: .
-    volumes:
-      - .:/app
-    depends_on:
-      - redis
-    networks:
-      - redis-net
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - QUEUE_EXAMPLE=queue_example
+      - ./data:/data/db

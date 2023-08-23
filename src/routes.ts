@@ -1,11 +1,11 @@
-import { BullMQRouter, SQSRouter } from '@coaktion/evolutty';
+import { SNSQueueRouter } from '@coaktion/evolutty';
 
 import config from './config';
-import { MyBullMQHandler, MySQSHandler } from './handlers';
+import { MySQSHandler } from './handlers';
 
 const routes = [
   {
-    routeType: SQSRouter,
+    routeType: SNSQueueRouter,
     routeParams: {
       accessKeyId: config.sqs.accessKeyId,
       secretAccessKey: config.sqs.secretAccessKey,
@@ -15,11 +15,6 @@ const routes = [
     },
     handler: MySQSHandler,
     queueName: config.queueNameSQS
-  },
-  {
-    routeType: BullMQRouter,
-    handler: MyBullMQHandler,
-    queueName: config.queueNameBullMQ
   }
 ];
 
