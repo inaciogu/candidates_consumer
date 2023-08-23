@@ -13,6 +13,7 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json ./
 
 RUN npm install --production
+RUN npm install -g typescript
 
 COPY . .
 
