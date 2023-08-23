@@ -4,10 +4,10 @@ dotenv.config();
 
 const config = {
   sqs: {
-    accessKeyId: process.env.SQS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.SQS_SECRET_ACCESS_KEY,
-    endpoint: process.env.SQS_ENDPOINT,
-    region: process.env.SQS_REGION,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    endpoint: process.env.AWS_ENDPOINT,
+    region: process.env.AWS_REGION,
     visibilityTimeout: parseInt(process.env.SQS_VISIBILITY_TIMEOUT)
   },
   queueNameSQS: process.env.QUEUE_NAME_SQS,
