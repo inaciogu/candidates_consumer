@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --exec ts-node src/index.ts",
-    "build": "npm run clean && tsc",
+    "start:prod": "node dist/index.js",
+    "build": "npm install && npm run clean && tsc",
     "watch": "tsc --watch",
     "clean": "rm -fr dist/*",
     "prepublishOnly": "npm run build",
